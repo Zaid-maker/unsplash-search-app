@@ -1,5 +1,9 @@
 <script></script>
 
+<main class="App">
+  <h1>Unsplash Search App</h1>
+</main>
+
 <style>
   .App {
     width: 100%;
@@ -15,7 +19,3 @@
     margin-bottom: 30px;
   }
 </style>
-
-<main class="App">
-  <h1>Unsplash Search App</h1>
-</main>

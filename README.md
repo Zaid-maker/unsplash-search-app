@@ -1,6 +1,6 @@
 # Unsplash Search App starter files
 
-Starter files for the Unsplash Search app built with Svelte 3. Tutorial: https://freshman.tech/unsplash-search/
+Starter files for the Unsplash Search app built with Svelte 3. Tutorial: <https://freshman.tech/unsplash-search/>
 
 Here's what the completed application looks like:
 
