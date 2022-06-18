@@ -1,6 +1,7 @@
 <script>
   import Search from "./Search.svelte";
   import SearchResults from "./SearchResults.svelte";
+  import LoadingIndicator from "./LoadingIndicator.svelte";
 
   const UNSPLASH_ACCESS_KEY = "EJ49yYYs-cEuoMtG4Q9dtmWEOyp3A4nJAzUaQV1qqTA";
 
@@ -60,6 +61,12 @@
   <Search bind:query={searchQuery} {handleSubmit} />
 
   <SearchResults results={searchResults} />
+
+  <div class="loading-indicator">
+    {#if isLoading}
+      <LoadingIndicator />
+    {/if}
+  </div>
 </main>
 
 <style>
