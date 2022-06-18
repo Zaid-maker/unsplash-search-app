@@ -1,5 +1,5 @@
 <script>
-  import Search from "./Search.svelte";
+  import Search from "./search.svelte";
   import SearchResults from "./SearchResults.svelte";
   import LoadingIndicator from "./LoadingIndicator.svelte";
 
