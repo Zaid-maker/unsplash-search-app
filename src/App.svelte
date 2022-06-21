@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   import Search from "./search.svelte";
   import SearchResults from "./SearchResults.svelte";
   import LoadingIndicator from "./LoadingIndicator.svelte";
@@ -12,6 +14,29 @@
   let nextPage = 1;
   let isLoading = false;
 
+  let observer;
+  let target;
+
+  const options = {
+    rootMargin: "0px 0px 300px",
+    threshold: 0,
+  };
+
+  const loadMoreResults = (entries) => {
+    entries.forEach((entry) => {
+      if (nextPage === 1 || isLoading) return;
+
+      if (entry.isIntersecting) {
+        searchUnsplash();
+      }
+    });
+  };
+
+  onMount(() => {
+    observer = new IntersectionObserver(loadMoreResults, options);
+    target = document.querySelector(".loading-indicator");
+  });
+
   function handleSubmit() {
     searchTerm = searchQuery.trim();
     searchResults = [];
@@ -20,6 +45,7 @@
 
     if (!searchTerm) return;
 
+    observer.observe(target);
     searchUnsplash();
   }
 
@@ -51,6 +77,10 @@
       .catch(() => alert("Something went wrong."))
       .finally(() => {
         isLoading = false;
+
+        if (nextPage >= Number(totalPages)) {
+          observer.observe(target);
+        }
       });
   }
 </script>
